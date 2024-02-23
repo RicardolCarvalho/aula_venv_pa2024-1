@@ -14,16 +14,16 @@ def cadastra_aluno_func():
     nome = dic_aluno.get('nome',"")
     if nome == '':
         resp = {"erro": "Nome não informado"}
-        return resp
+        return resp, 400
     lista_alunos.append(dic_aluno)
     
     resp = {"mensagem": "Aluno Cadastrado",
             "aluno": dic_aluno}
-    return resp
+    return resp, 201
 
 @app.route("/lista_alunos", methods=['GET'])
 def lista_alunos_func():
-    resp = lista_alunos
+    resp = {'alunos': lista_alunos}
     return resp
 
 if __name__ == "__main__":
